@@ -37,7 +37,7 @@ export default function DetailStartUp(props) {
             <Loading />
           ) : (
             <Row>
-              <Col md="7">
+              <Col md="7" xs="11">
                 <div className="DeleteUser">
                   <FaEllipsisV
                     onClick={() => setOpen(!isOpen ? true : false)}

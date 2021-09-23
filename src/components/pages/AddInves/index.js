@@ -44,7 +44,7 @@ export default function AddInves(props) {
             <label htmlFor="investor">Nama Investor</label>
             <input
               type="text"
-              name="nama_investor"
+              name="nama investor"
               required
               value={investor.nama_investor}
               onChange={(e) =>

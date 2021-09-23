@@ -89,7 +89,7 @@ export default function AddStartUp(props) {
               onChange={(e) =>
                 setStartup({ ...startup, lokasi: e.target.value })
               }
-              placeholder="nama startup"
+              placeholder="lokasi startup"
             />
           </div>
           <button type="submit">Tambah Start up</button>
