@@ -1,0 +1,110 @@
+.Wrapper {
+  display: flex;
+}
+.Sidebar {
+  background: var(--bg-sidebar);
+  width: 20%;
+  min-height: 100vh;
+  position: relative;
+  z-index: 3;
+}
+.ImgLogo {
+  width: 175px;
+  margin: 50px auto 70px;
+  display: block;
+}
+.CloseButton {
+  display: none;
+}
+.Sidebar div {
+  width: 100%;
+  padding: 10px 15px;
+  text-align: center;
+}
+.Sidebar div.Active {
+  background: var(--text-white);
+}
+.Sidebar div.Active h4 {
+  color: var(--bg-sidebar);
+}
+.Sidebar h4 {
+  font-weight: 600;
+  margin-bottom: 0 !important;
+  font-size: 20px;
+  color: var(--text-white);
+}
+.Content {
+  width: 100%;
+}
+.Content .container {
+  padding: 50px 70px;
+}
+.CreateEvent,
+.ScanEvent {
+  float: right;
+  width: 130px;
+  height: 45px;
+}
+.ScanEvent {
+  margin-right: 20px;
+}
+.Navbar {
+  display: none;
+}
+.Navbar {
+  margin-top: 20px;
+  justify-content: space-between;
+  position: relative;
+}
+.Navbar .MenuToggle {
+  width: 50%;
+}
+.Navbar .MenuToggle span {
+  width: 35px;
+  background: var(--bg-sidebar);
+  height: 6px;
+  border-radius: 30px;
+  margin-top: 7px;
+  display: block;
+  transition: 0.3s;
+}
+.Navbar .MenuToggle span:nth-child(2) {
+  width: 25px !important;
+}
+.Navbar input {
+  position: absolute;
+  top: 5px;
+  opacity: 0.5;
+  width: 40px;
+  left: 12px;
+}
+.Navbar .MenuToggle input:checked + .ImgLogoMerah {
+  transform: scale(0);
+  opacity: 0;
+}
+.ImgLogoMerah {
+  transition: 750ms;
+  width: 160px;
+}
+svg.CloseButton {
+  color: white;
+  font-size: 26px;
+  margin-top: 10px;
+}
+.ImgLogoMerah.Hide {
+  transition: 250ms;
+  transform: scale(0);
+}
+.WrapperLogout {
+  width: 100%;
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+svg.Logout {
+  color: var(--text-white);
+  transform: rotate(178deg);
+  font-size: 24px;
+}

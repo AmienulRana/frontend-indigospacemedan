@@ -1,0 +1,16 @@
+.QuestionSvg {
+  width: 100%;
+  text-align: center;
+  margin: auto;
+}
+.ImgSvg {
+  width: 250px !important;
+  margin: auto;
+  display: block;
+}
+.QuesitonSvg h4 {
+  color: var(--bg-sidebar);
+  font-weight: 800;
+  text-align: center;
+  margin-top: 20px;
+}

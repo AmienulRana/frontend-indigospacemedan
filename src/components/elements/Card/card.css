@@ -1,0 +1,96 @@
+.ColCard {
+  padding: 0 !important;
+  width: 330px !important;
+}
+.Card {
+  width: 100%;
+  background: var(--text-white);
+  height: 260px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.LinkDetail:hover ~ .Card {
+  background: #f9f9f9;
+}
+.Menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 18px;
+  margin-right: 4px;
+  position: relative;
+  z-index: 4;
+}
+.Menu svg {
+  margin-top: 10px;
+}
+.Delete {
+  position: absolute;
+  bottom: -20px;
+  right: 8px;
+  width: 100px;
+  background: var(--text-white);
+  text-align: center;
+  color: var(--bg-sidebar);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+}
+.Delete:hover {
+  background: #fbfbfb;
+}
+.NamaEvent {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  text-align: center;
+}
+.NamaEvent p {
+  color: var(--bg-sidebar);
+  font-size: 24px;
+  font-weight: 600;
+}
+.LocationEvent {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 70px;
+}
+.Card span {
+  color: var(--disabled);
+}
+.Date {
+  display: flex;
+  align-items: center;
+  width: 45%;
+}
+.WrapperIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffe5e6 !important;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+.Location {
+  width: 50% !important;
+  display: flex;
+  /* justify-content: space-around; */
+  align-items: center;
+}
+.Location span {
+  float: left;
+}
+svg {
+  color: var(--bg-sidebar);
+}

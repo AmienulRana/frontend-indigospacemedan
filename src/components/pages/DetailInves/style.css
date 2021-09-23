@@ -1,0 +1,22 @@
+/* @media print {
+  .Sidebar,
+  .Content {
+    display: none;
+  }
+  .WrapperPrintQr {
+    display: block !important;
+    margin-top: 30px;
+  }
+  .WrapperPrintQr img {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    display: block;
+  }
+  .WrapperPrintQr p {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--bg-sidebar);
+    text-align: center;
+  }
+} */

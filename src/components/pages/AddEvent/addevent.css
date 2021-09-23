@@ -1,0 +1,34 @@
+.WrapperInput {
+  margin-top: 77px;
+  width: 60%;
+}
+.WrapperInput input {
+  width: 100%;
+}
+.HalfInput {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.HalfInput div {
+  position: relative;
+  width: 48%;
+}
+.HalfInput div svg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+}
+.HalfInput input {
+  width: 100%;
+}
+button {
+  width: 100%;
+  height: 40px;
+  margin-top: 15px !important;
+}
+.success {
+  font-weight: 600;
+  color: var(--bg-sidebar);
+}

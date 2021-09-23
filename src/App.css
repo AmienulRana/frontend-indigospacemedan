@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+
+* {
+  font-family: "Raleway", sans-serif;
+}
+
+:root {
+  --bg-sidebar: #e52027;
+  --text-white: #ffffff;
+  --btn-hover: #c11a20;
+  --disabled: #e4e4e4;
+}
+a {
+  text-decoration: none !important;
+}
+.Title {
+  color: var(--bg-sidebar);
+  font-weight: 600;
+}
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: var(--bg-sidebar);
+  color: var(--text-white);
+  outline: none;
+  height: 50px;
+  font-weight: 600;
+}
+button:hover {
+  background: var(--btn-hover);
+}
+
+button a {
+  color: var(--text-white);
+  text-decoration: none;
+}
+button a:hover {
+  color: var(--text-white);
+}
+
+input {
+  height: 40px;
+  outline: none;
+  padding: 0px 30px;
+  border: 1px solid var(--disabled);
+}
+input:focus,
+input:valid {
+  border: 1px solid var(--bg-sidebar);
+}
+
+@media (max-width: 767.98px) {
+  .Wrapper {
+    display: block !important;
+    position: relative;
+  }
+  /* Navbar */
+  .Navbar {
+    display: flex !important;
+    align-items: center;
+    padding: 0 15px;
+  }
+  .Sidebar {
+    position: fixed !important;
+    top: 0;
+    left: -100%;
+    width: 80% !important;
+    transition: 850ms;
+  }
+  .Sidebar.Active {
+    transition: 350ms;
+    left: 0%;
+  }
+  .CloseButton {
+    display: block !important;
+  }
+  .Content .container {
+    padding: 50px 15px !important;
+  }
+  .Title {
+    margin-bottom: 0px;
+  }
+  /* home */
+  .ColCard {
+    width: 85%;
+    margin: auto;
+  }
+  .Card {
+    margin-bottom: 30px !important;
+    height: 250px !important;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1) !important;
+  }
+  .WrapperInput,
+  .wrapperPreview {
+    margin-top: 30px !important;
+  }
+  .WrapperAddInput,
+  .WrapperInput {
+    width: 100% !important;
+  }
+
+  /* detail event */
+  .ScanEvent {
+    margin-right: 0 !important;
+  }
+  .WrapperTable {
+    overflow-x: scroll;
+  }
+  .CreateEvent,
+  .ScanEvent {
+    width: 110px !important;
+    height: 40px !important;
+    font-size: 15px;
+    margin-top: 0px !important;
+  }
+  .AddStrInvs button {
+    width: 130px;
+    font-size: 15px;
+  }
+  .DataTable button {
+    width: 80px;
+    height: 35px;
+  }
+  .HeaderTable,
+  .DataTable {
+    width: 400px !important;
+    padding: 0 10px !important;
+    font-size: 15px;
+  }
+  .HeaderTable p,
+  .DataTable p {
+    width: 32% !important;
+  }
+  .HeaderTable p:nth-child(1),
+  .DataTable p:nth-child(1) {
+    width: 10% !important;
+  }
+  /* add startup & investor */
+  .WrapperAddEvent {
+    width: 100% !important;
+    margin-top: 50px !important;
+  }
+  /* detail user */
+  .WrapperDetailStartup .col-md-7 {
+    margin: auto;
+    padding: 20px 15px !important;
+  }
+  .WrapperDetailStartup .col-md-4 {
+    margin: 30px auto 0 !important;
+  }
+  /* scanner */
+  .wrapperPreview {
+    flex-direction: column;
+  }
+  .Scanner {
+    width: 100%;
+  }
+  .Scanner section {
+    margin: auto;
+  }
+  .wrapperPreview div:nth-child(2) {
+    margin-left: 0 !important;
+    margin-top: 10px;
+  }
+  .Message p,
+  .MessageError p {
+    font-size: 18px !important;
+  }
+  /* login */
+  .WrapperLogin .ParentForm {
+    width: 90% !important;
+  }
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+}

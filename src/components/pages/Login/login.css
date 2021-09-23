@@ -1,0 +1,35 @@
+.WrapperLogin {
+  justify-content: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+}
+.WrapperLogin .ParentForm {
+  width: 40%;
+}
+.WrapperLogin img {
+  display: block;
+  margin: auto;
+}
+.WrapperLogin .input {
+  position: relative;
+  margin-top: 30px;
+}
+input {
+  width: 100%;
+  padding: 0 15px 0 45px;
+}
+.input svg {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+
+.FalseAuth {
+  color: var(--bg-sidebar);
+  margin: 10px 0;
+  font-weight: 600;
+}

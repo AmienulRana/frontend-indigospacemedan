@@ -1,0 +1,66 @@
+.wrapperPreview {
+  margin-top: 77px;
+  display: flex;
+}
+video#preview {
+  width: 340px;
+  height: 280px;
+  border: 1px solid var(--bg-sidebar);
+}
+.wrapperPreview section section div:nth-child(1) {
+  border: 10px solid rgba(0, 0, 0, 0.3) !important;
+}
+.wrapperPreview section section {
+  position: relative !important;
+}
+.wrapperPreview section section div:nth-child(1)::before {
+  position: absolute;
+  content: " ";
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 4px;
+  background: var(--bg-sidebar);
+  /* background: rgb(2, 0, 36); */
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(252, 70, 91, 1) 0%,
+    rgba(255, 0, 0, 1) 41%,
+    rgba(245, 91, 91, 1) 100%
+  );
+  z-index: 3;
+  animation: vertikal 3s ease-in-out infinite;
+  animation-direction: alternate;
+}
+@keyframes vertikal {
+  0% {
+    transform: translate(-50%, 248px);
+  }
+  100% {
+    transform: translate(-50%, 0px);
+  }
+}
+.Message,
+.MessageError {
+  margin-left: 100px;
+  /* color: var(--bg-sidebar); */
+  font-weight: bold;
+  font-size: 22px;
+  display: flex;
+  height: max-content;
+  align-items: center;
+}
+.Message p,
+.MessageError p {
+  margin-bottom: 0px;
+  margin-left: 10px;
+  color: #22ff60;
+}
+.Message svg {
+  color: #22ff60;
+}
+.MessageError p {
+  color: var(--bg-sidebar) !important;
+}

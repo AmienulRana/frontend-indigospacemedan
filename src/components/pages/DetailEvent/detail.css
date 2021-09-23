@@ -1,0 +1,33 @@
+.DetailEvent {
+  margin-top: 77px;
+}
+.Tabs {
+  display: flex;
+  align-items: center;
+  width: 230px;
+  justify-content: space-between;
+}
+.Tabs a {
+  width: 50%;
+  color: var(--disabled) !important;
+  position: relative;
+  padding-bottom: 10px;
+}
+.Tabs a.active {
+  color: var(--bg-sidebar) !important;
+  font-weight: 600;
+}
+.Tabs a.active:before {
+  width: 80%;
+  position: absolute;
+  transition: 0.3s;
+  content: "";
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  height: 2px;
+  background: var(--bg-sidebar);
+}
+.WrapperTable {
+  margin-top: 45px;
+}

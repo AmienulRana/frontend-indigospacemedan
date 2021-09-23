@@ -1,0 +1,21 @@
+.WrapperAddEvent {
+  margin-top: 77px;
+  width: 50%;
+}
+.inputAddEvent {
+  width: 100%;
+  margin-top: 20px;
+}
+.inputAddEvent input {
+  width: 100%;
+  padding: 0 13px !important;
+}
+.inputAddEvent label {
+  color: var(--bg-sidebar);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.WrapperAddEvent p.message {
+  color: var(--bg-sidebar) !important;
+  font-weight: bold;
+}

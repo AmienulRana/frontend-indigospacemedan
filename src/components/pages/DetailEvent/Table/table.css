@@ -1,0 +1,37 @@
+.HeaderTable {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-white);
+  background: var(--bg-sidebar);
+  height: 50px;
+  padding: 0 15px;
+}
+.HeaderTable p:nth-child(1),
+.DataTable p:nth-child(1) {
+  width: 10%;
+  text-align: left;
+}
+.HeaderTable p,
+.DataTable p {
+  font-weight: 600;
+  width: 22%;
+  text-align: center;
+  margin-bottom: 0 !important;
+}
+.DataTable {
+  padding: 0 15px;
+  height: auto;
+  min-height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--disabled);
+}
+.DataTable button {
+  width: 110px;
+  display: block;
+  margin: 0 auto 0 !important;
+}
