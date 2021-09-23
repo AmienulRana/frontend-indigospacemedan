@@ -12,8 +12,9 @@ export default function Home() {
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
     getApi("event")
-      .then((res) => {
-        setEvents(res.events);
+      .then(async (res) => {
+        console.log(res);
+        await setEvents(res.events);
         setLoading(false);
       })
       .catch((err) => console.log(err));
