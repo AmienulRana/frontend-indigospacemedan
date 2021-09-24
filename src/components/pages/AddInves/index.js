@@ -55,7 +55,7 @@ export default function AddInves(props) {
               onChange={(e) =>
                 setInvestor({ ...investor, nama_investor: e.target.value })
               }
-              placeholder="nama start up"
+              placeholder="nama investor"
             />
           </div>
           <div className="inputAddEvent">

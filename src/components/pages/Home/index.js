@@ -13,7 +13,6 @@ export default function Home() {
   useEffect(() => {
     getApi("event")
       .then(async (res) => {
-        console.log(res);
         await setEvents(res.events);
         setLoading(false);
       })

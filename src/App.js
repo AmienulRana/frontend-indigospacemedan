@@ -36,7 +36,7 @@ function App() {
         <Route exact path="/startup/:id" component={pages.DetailStartUp} />
         <Route exact path="/:eventId/investor" component={pages.AddInves} />
         <Route exact path="/investor/:id" component={pages.DetailInves} />
-        <Route exact path="/scan/:eventId" component={pages.Scan} />
+        <Route exact path="/scan" component={pages.Scan} />
         )
         <Route exact path="/login" component={pages.Login} />
         <Route path="/" component={pages.NotFound} />

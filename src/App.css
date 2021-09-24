@@ -56,6 +56,9 @@ input:valid {
     display: block !important;
     position: relative;
   }
+  h2.Title svg {
+    display: none !important;
+  }
   /* Navbar */
   .Navbar {
     display: flex !important;

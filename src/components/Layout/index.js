@@ -9,12 +9,19 @@ import LogoMerah from "../../assets/img/logoMerah.png";
 import { useHistory } from "react-router-dom";
 
 function Layout(props) {
-  const { arrowB = false, children, dbutton, dbuttonS, title, eventId } = props;
+  const { arrowB = false, children, dbutton, dbuttonS, eventId } = props;
+  let { title } = props;
   const { pathname } = window.location;
   const isActive = pathname === "/";
   const [sidebar, setSidebar] = useState(false);
   const history = useHistory();
-
+  let tempTitle = title.split("");
+  if (window.innerWidth < 768) {
+    if (title.length > 16) {
+      tempTitle.splice(16, title.length - 16);
+      title = tempTitle.join("") + "...";
+    }
+  }
   useEffect(() => {
     if (window.innerWidth < 768) {
       setSidebar(false);
@@ -31,16 +38,26 @@ function Layout(props) {
 
   return (
     <div className="Wrapper">
-      <div className="Navbar">
-        <div className="MenuToggle" onClick={showSidebar}>
-          <span />
-          <span />
-        </div>
-        <img
-          src={LogoMerah}
-          alt="logo indigo merah"
-          className={sidebar ? "ImgLogoMerah Hide" : "ImgLogoMerah"}
-        />
+      <div className="Navbar align-items-center">
+        {arrowB ? (
+          <FaArrowLeft
+            className="ArrowBack"
+            style={{ display: arrowB ? "block" : "none" }}
+            onClick={() => history.goBack()}
+          />
+        ) : (
+          <div className="MenuToggle" onClick={showSidebar}>
+            <span />
+            <span />
+          </div>
+        )}
+        <Link to="/">
+          <img
+            src={LogoMerah}
+            alt="logo indigo merah"
+            className={sidebar ? "ImgLogoMerah Hide" : "ImgLogoMerah"}
+          />
+        </Link>
       </div>
       <div className={sidebar ? "Sidebar Active" : "Sidebar"}>
         <div className="d-flex justify-content-between alig-items-center">
@@ -58,14 +75,21 @@ function Layout(props) {
       </div>
       <div className="Content">
         <Container>
-          <FaArrowLeft
-            className="ArrowBack"
-            style={{ display: arrowB ? "block" : "none" }}
-            onClick={() => history.goBack()}
-          />
           <Row className="justify-content-between align-items-center">
-            <Col xs={dbutton && dbuttonS === "none" ? "8" : "8"} md="6">
-              <h2 className="Title">{title}</h2>
+            <Col
+              xs={dbutton && dbuttonS === "none" ? "8" : "8"}
+              md="6"
+              className="d-flex"
+            >
+              <h2 className="Title">
+                {" "}
+                <FaArrowLeft
+                  className="ArrowBack"
+                  style={{ display: arrowB ? "block" : "none" }}
+                  onClick={() => history.goBack()}
+                />
+                {title}
+              </h2>
             </Col>
             <Col xs="4">
               <button

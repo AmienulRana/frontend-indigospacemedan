@@ -1,5 +1,8 @@
-.WrapperCard{
+.WrapperCard {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin-top: 77px !important;
+}
+.ColCard {
+  margin-left: 10px;
 }
