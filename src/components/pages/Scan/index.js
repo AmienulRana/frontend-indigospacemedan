@@ -59,7 +59,7 @@ export default function Scan(props) {
     console.log(err);
   };
   return (
-    <Layout title="Scan Qr Code" dbutton="none" dbuttonS="none">
+    <Layout arrowB={true} title="Scan Qr Code" dbutton="none" dbuttonS="none">
       <div className="wrapperPreview">
         <div className="Scanner">
           <QrReader

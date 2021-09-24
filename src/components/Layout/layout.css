@@ -91,6 +91,10 @@ svg.CloseButton {
   font-size: 26px;
   margin-top: 10px;
 }
+svg.ArrowBack {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
 .ImgLogoMerah.Hide {
   transition: 250ms;
   transform: scale(0);

@@ -31,7 +31,12 @@ export default function DetailStartUp(props) {
   });
   return (
     <>
-      <Layout title="Detail Investor" dbutton="none" dbuttonS="block">
+      <Layout
+        arrowB={true}
+        title="Detail Investor"
+        dbutton="none"
+        dbuttonS="block"
+      >
         <div className="WrapperDetailStartup">
           {isLoading ? (
             <Loading />

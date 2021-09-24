@@ -36,7 +36,12 @@ export default function AddStartUp(props) {
   }, [message]);
 
   return (
-    <Layout title="Tambah start up" dbutton="none" dbuttonS="none">
+    <Layout
+      arrowB={true}
+      title="Tambah start up"
+      dbutton="none"
+      dbuttonS="none"
+    >
       <div className="WrapperAddEvent">
         <form onSubmit={handleSubmit} method="post">
           <p className="message">{message}</p>

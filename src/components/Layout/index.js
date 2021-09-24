@@ -2,18 +2,19 @@ import React, { useState, useEffect } from "react";
 import "./layout.css";
 import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
-import { FaTimes, FaSignOutAlt } from "react-icons/fa";
+import { FaArrowLeft, FaTimes, FaSignOutAlt } from "react-icons/fa";
 import { deleteToken } from "../../utils/storage";
 import Logo from "../../assets/img/logo.png";
 import LogoMerah from "../../assets/img/logoMerah.png";
 import { useHistory } from "react-router-dom";
 
 function Layout(props) {
-  const { children, dbutton, dbuttonS, title, eventId } = props;
+  const { arrowB = false, children, dbutton, dbuttonS, title, eventId } = props;
   const { pathname } = window.location;
   const isActive = pathname === "/";
   const [sidebar, setSidebar] = useState(false);
   const history = useHistory();
+
   useEffect(() => {
     if (window.innerWidth < 768) {
       setSidebar(false);
@@ -57,6 +58,11 @@ function Layout(props) {
       </div>
       <div className="Content">
         <Container>
+          <FaArrowLeft
+            className="ArrowBack"
+            style={{ display: arrowB ? "block" : "none" }}
+            onClick={() => history.goBack()}
+          />
           <Row className="justify-content-between align-items-center">
             <Col xs={dbutton && dbuttonS === "none" ? "8" : "8"} md="6">
               <h2 className="Title">{title}</h2>

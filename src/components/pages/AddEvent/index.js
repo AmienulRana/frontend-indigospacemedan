@@ -39,7 +39,7 @@ export default function AddEvent() {
     }, 3000);
   }, [message]);
   return (
-    <Layout title="Tambah Event" dbutton="none" dbuttonS="none">
+    <Layout arrowB={true} title="Tambah Event" dbutton="none" dbuttonS="none">
       <div className="WrapperInput">
         {message !== null ? <p className="success">{message}</p> : ""}
         <form onSubmit={handleEvent}>

@@ -36,7 +36,12 @@ export default function AddInves(props) {
   }, [message]);
 
   return (
-    <Layout title="Tambah Investor" dbutton="none" dbuttonS="none">
+    <Layout
+      arrowB={true}
+      title="Tambah Investor"
+      dbutton="none"
+      dbuttonS="none"
+    >
       <div className="WrapperAddEvent">
         <form onSubmit={handleSubmit} method="post">
           <p className="message">{message}</p>

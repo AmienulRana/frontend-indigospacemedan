@@ -20,6 +20,7 @@ export default function DetailEvent(props) {
       eventId={id}
       dbutton="none"
       dbuttonS="block"
+      arrowB={true}
     >
       <div className="DetailEvent">
         <div className="d-flex AddStrInvs justify-content-between align-items-center">
