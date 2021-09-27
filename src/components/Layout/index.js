@@ -9,7 +9,7 @@ import LogoMerah from "../../assets/img/logoMerah.png";
 import { useHistory } from "react-router-dom";
 
 function Layout(props) {
-  const { arrowB = false, children, dbutton, dbuttonS, eventId } = props;
+  const { arrowB = false, children, dbutton, eventId } = props;
   let { title } = props;
   const { pathname } = window.location;
   const isActive = pathname === "/";
@@ -76,11 +76,7 @@ function Layout(props) {
       <div className="Content">
         <Container>
           <Row className="justify-content-between align-items-center">
-            <Col
-              xs={dbutton && dbuttonS === "none" ? "8" : "8"}
-              md="6"
-              className="d-flex"
-            >
+            <Col xs={dbutton && "none" ? "8" : "8"} md="6" className="d-flex">
               <h2 className="Title">
                 {" "}
                 <FaArrowLeft
@@ -94,15 +90,15 @@ function Layout(props) {
             <Col xs="4">
               <button
                 className="CreateEvent"
-                style={{ display: dbutton ? dbutton : "block" }}
+                style={{ display: !isActive ? "none" : "block" }}
               >
                 <Link to="/add-event">Buat Event</Link>
               </button>
               <button
                 className="ScanEvent"
-                style={{ display: dbuttonS ? dbuttonS : "block" }}
+                style={{ display: !isActive ? "none" : "block" }}
               >
-                <Link to={`/scan/${eventId}`}>Scan Qr Code</Link>
+                <Link to={`/scan`}>Scan Qr Code</Link>
               </button>
             </Col>
           </Row>

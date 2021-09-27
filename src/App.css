@@ -10,6 +10,9 @@
   --btn-hover: #c11a20;
   --disabled: #e4e4e4;
 }
+.mt-15 {
+  margin-top: 15px;
+}
 a {
   text-decoration: none !important;
 }

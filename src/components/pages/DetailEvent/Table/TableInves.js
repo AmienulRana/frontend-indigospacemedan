@@ -8,6 +8,7 @@ export default function TableInvestor(props) {
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
     getApi(`${eventId}/investor`).then((res) => {
+      console.log(res);
       setInves(res.investor);
       setLoading(false);
     });

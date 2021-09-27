@@ -4,6 +4,7 @@ import axios from "axios";
 import "./addevent.css";
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { getToken } from "../../../utils/storage";
+import { useHistory } from "react-router-dom";
 export default function AddEvent() {
   const [event, setEvent] = useState({
     nama_event: "",
@@ -11,27 +12,30 @@ export default function AddEvent() {
     lokasi_event: "",
   });
   const [message, setMessage] = useState(null);
+  const history = useHistory();
   const handleEvent = (e) => {
     e.preventDefault();
-    return axios({
-      method: "post",
-      url: "https://api-indigospacemedan.herokuapp.com/event",
-      headers: {
-        Authorization: "Bearer " + getToken(),
-      },
-      data: {
-        nama_event: event.nama_event,
-        jadwal_event: event.jadwal_event,
-        lokasi_event: event.lokasi_event,
-      },
-    }).then((res) => {
-      setMessage(res.data.message);
-      setEvent({
-        nama_event: "",
-        jadwal_event: "",
-        lokasi_event: "",
+    const today = new Date();
+    const jEvent = event.jadwal_event.split("-")[0];
+    const yyyy = today.getFullYear();
+    if (parseInt(jEvent) < yyyy) {
+      return console.log("tidak bisa menambahkan event");
+    } else {
+      return axios({
+        method: "post",
+        url: "https://api-indigospacemedan.herokuapp.com/event",
+        headers: {
+          Authorization: "Bearer " + getToken(),
+        },
+        data: {
+          nama_event: event.nama_event,
+          jadwal_event: event.jadwal_event,
+          lokasi_event: event.lokasi_event,
+        },
+      }).then((res) => {
+        history.push("/");
       });
-    });
+    }
   };
   useEffect(() => {
     setTimeout(() => {
@@ -55,7 +59,7 @@ export default function AddEvent() {
             <div>
               <FaCalendarAlt />
               <input
-                type="text"
+                type="date"
                 nama="jadwal_event"
                 placeholder="Jadwal Event"
                 value={event.jadwal_event}
@@ -79,7 +83,7 @@ export default function AddEvent() {
               />
             </div>
           </div>
-          <button>Tambahkan Event</button>
+          <button className="mt-15">Tambahkan Event</button>
         </form>
       </div>
     </Layout>

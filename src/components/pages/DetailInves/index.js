@@ -17,6 +17,11 @@ export default function DetailStartUp(props) {
   const { id } = props.match.params;
   useEffect(() => {
     getApi(`investor/${id}`).then((res) => {
+      if (res.error) {
+        return history.push("/");
+      } else if (res.investor === null) {
+        return history.push("/");
+      }
       setInvestor(res.investor);
       setLoading(!true);
     });
@@ -31,12 +36,7 @@ export default function DetailStartUp(props) {
   });
   return (
     <>
-      <Layout
-        arrowB={true}
-        title="Detail Investor"
-        dbutton="none"
-        dbuttonS="block"
-      >
+      <Layout arrowB={true} title="Detail Investor">
         <div className="WrapperDetailStartup">
           {isLoading ? (
             <Loading />

@@ -19,8 +19,13 @@ export default function Home() {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <Layout title="Daftar Event" dbuttonS="none">
-      <Row className="WrapperCard">
+    <Layout title="Daftar Event">
+      <Row
+        className={[
+          "WrapperCard",
+          events.length > 2 ? "justify-content-between" : "",
+        ].join(" ")}
+      >
         {isLoading ? (
           <Loading />
         ) : events.length < 1 ? (
@@ -28,7 +33,14 @@ export default function Home() {
         ) : (
           events.map((event, id) => {
             return (
-              <Col xs="12" md="4" xl="3" className="ColCard" key={id}>
+              <Col
+                xs="12"
+                md="4"
+                xl="3"
+                className="ColCard"
+                key={id}
+                style={{ marginLeft: events.length < 3 ? "15px" : "0" }}
+              >
                 <Card
                   id={event._id}
                   nama={event.nama_event}

@@ -31,13 +31,12 @@ export default function Scan(props) {
   const [message, setMessage] = useState("");
   const [error, setError] = useState(undefined);
   const [playing, toggle] = useAudio(scanEffect);
-  const { eventId } = props.match.params;
   const handleScan = (result) => {
     if (result !== null) {
       toggle();
       axios({
         method: "post",
-        url: "https://api-indigospacemedan.herokuapp.com/scann/" + eventId,
+        url: "http://localhost:3000/scann",
         headers: {
           Authorization: "Bearer " + getToken(),
         },
@@ -59,7 +58,7 @@ export default function Scan(props) {
     console.log(err);
   };
   return (
-    <Layout arrowB={true} title="Scan Qr Code" dbutton="none" dbuttonS="none">
+    <Layout arrowB={true} title="Scan Qr Code">
       <div className="wrapperPreview">
         <div className="Scanner">
           <QrReader

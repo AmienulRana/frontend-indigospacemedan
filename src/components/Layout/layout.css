@@ -8,6 +8,9 @@
   position: relative;
   z-index: 3;
 }
+h2 {
+  margin-bottom: 0px !important;
+}
 .ImgLogo {
   width: 175px;
   margin: 50px auto 70px;

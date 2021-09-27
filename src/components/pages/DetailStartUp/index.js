@@ -18,6 +18,11 @@ export default function DetailStartUp(props) {
   const { id } = props.match.params;
   useEffect(() => {
     getApi(`startup/${id}`).then((res) => {
+      if (res.error) {
+        return history.push("/");
+      } else if (res.startup === null) {
+        return history.push("/");
+      }
       setStartup(res.startup);
       setLoading(!true);
     });
@@ -27,18 +32,20 @@ export default function DetailStartUp(props) {
       history.push(`/detail/${startup._id_event}`);
     });
   };
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-  });
+  // const handlePrint = useReactToPrint({
+  //   content: () => componentRef.current,
+  // });
+  const downloadQrCode = () => {
+    const qrCodeURL = document
+      .getElementById("ImgQrCode")
+      .toDataURL("image/png")
+      .replace("image/png", "image/octet-stream");
+    console.log(qrCodeURL);
+  };
 
   return (
     <>
-      <Layout
-        arrowB={true}
-        title="Detail StartUp"
-        dbutton="none"
-        dbuttonS="none"
-      >
+      <Layout arrowB={true} title="Detail StartUp">
         <div className="WrapperDetailStartup">
           {isLoading ? (
             <Loading />
@@ -91,10 +98,11 @@ export default function DetailStartUp(props) {
                   <img
                     src={startup.imgQrCode}
                     className="ImgQrCode"
+                    id="ImgQrCode"
                     alt="qr code"
                   />
                 </div>
-                <button onClick={handlePrint}>Print Qr Code</button>
+                <button onClick={downloadQrCode}>Print Qr Code</button>
               </Col>
             </Row>
           )}

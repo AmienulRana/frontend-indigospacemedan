@@ -20,13 +20,7 @@ export default function AddInves(props) {
       perusahaan: investor.perusahaan,
     }).then((res) => {
       if (!res.error) {
-        setMessage(res.message);
-        setInvestor({
-          nama_investor: "",
-          daerah: "",
-          sector_usaha: "",
-          perusahaan: "",
-        });
+        window.location.href = `/detail/${eventId}/investor`;
         return false;
       }
     });
@@ -36,12 +30,7 @@ export default function AddInves(props) {
   }, [message]);
 
   return (
-    <Layout
-      arrowB={true}
-      title="Tambah Investor"
-      dbutton="none"
-      dbuttonS="none"
-    >
+    <Layout arrowB={true} title="Tambah Investor" s>
       <div className="WrapperAddEvent">
         <form onSubmit={handleSubmit} method="post">
           <p className="message">{message}</p>
@@ -97,7 +86,9 @@ export default function AddInves(props) {
               placeholder="Perusahaan"
             />
           </div>
-          <button type="submit">Tambah Investor</button>
+          <button type="submit" className="mt-15">
+            Tambah Investor
+          </button>
         </form>
       </div>
     </Layout>

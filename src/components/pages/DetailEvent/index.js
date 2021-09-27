@@ -11,15 +11,18 @@ export default function DetailEvent(props) {
   const id = props.match.params.id;
   const [events, setEvents] = useState(false);
   useEffect(() => {
-    getApi(`event/${id}`).then((res) => setEvents(res));
+    getApi(`event/${id}`).then((res) => {
+      if (res.error) {
+        return (window.location.href = "/");
+      }
+      setEvents(res);
+    });
   }, []);
 
   return (
     <Layout
       title={!events ? "" : events.event.nama_event}
       eventId={id}
-      dbutton="none"
-      dbuttonS="block"
       arrowB={true}
     >
       <div className="DetailEvent">

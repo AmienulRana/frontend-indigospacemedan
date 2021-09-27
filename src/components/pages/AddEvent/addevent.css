@@ -10,6 +10,9 @@
   justify-content: space-between;
   margin-top: 15px;
 }
+.WrapperInput input::-webkit-calendar-picker-indicator {
+  display: none;
+}
 .HalfInput div {
   position: relative;
   width: 48%;
@@ -26,7 +29,7 @@
 button {
   width: 100%;
   height: 40px;
-  margin-top: 15px !important;
+  /* margin-top: 15px !important; */
 }
 .success {
   font-weight: 600;

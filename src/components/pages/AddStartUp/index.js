@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./style.css";
 import Layout from "../../Layout";
 import { addApi } from "../../../utils/fetch";
+import { useHistory } from "react-router-dom";
+import Modals from "../../elements/Modals";
+
 export default function AddStartUp(props) {
   const { eventId } = props.match.params;
   const [startup, setStartup] = useState({
@@ -11,6 +14,7 @@ export default function AddStartUp(props) {
     lokasi: "",
   });
   const [message, setMessage] = useState("");
+  const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
     addApi(`${eventId}/startup`, {
@@ -20,14 +24,8 @@ export default function AddStartUp(props) {
       lokasi: startup.lokasi,
     }).then((res) => {
       if (!res.error) {
-        setMessage(res.message);
-        setStartup({
-          nama_startup: "",
-          founder: "",
-          bidang: "",
-          lokasi: "",
-        });
-        return false;
+        history.goBack();
+        // return false;
       }
     });
   };
@@ -36,12 +34,7 @@ export default function AddStartUp(props) {
   }, [message]);
 
   return (
-    <Layout
-      arrowB={true}
-      title="Tambah start up"
-      dbutton="none"
-      dbuttonS="none"
-    >
+    <Layout arrowB={true} title="Tambah start up">
       <div className="WrapperAddEvent">
         <form onSubmit={handleSubmit} method="post">
           <p className="message">{message}</p>
@@ -97,7 +90,9 @@ export default function AddStartUp(props) {
               placeholder="lokasi startup"
             />
           </div>
-          <button type="submit">Tambah Start up</button>
+          <button type="submit" className="mt-15">
+            Tambah Start up
+          </button>
         </form>
       </div>
     </Layout>

@@ -11,13 +11,13 @@
   width: 50%;
   color: var(--disabled) !important;
   position: relative;
-  padding-bottom: 10px;
+  /* padding-bottom: 10px; */
 }
 .Tabs a.active {
   color: var(--bg-sidebar) !important;
   font-weight: 600;
 }
-.Tabs a.active:before {
+/* .Tabs a.active:before {
   width: 80%;
   position: absolute;
   transition: 0.3s;
@@ -27,7 +27,7 @@
   z-index: 1;
   height: 2px;
   background: var(--bg-sidebar);
-}
+} */
 .WrapperTable {
   margin-top: 45px;
 }
