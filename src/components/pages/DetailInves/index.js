@@ -1,17 +1,17 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Layout from "../../Layout/";
 import "./style.css";
 import { Row, Col } from "reactstrap";
 import Loading from "../../elements/Loading";
 import { FaEllipsisV } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
-import { useReactToPrint } from "react-to-print";
+import downloadjs from 'downloadjs';
+import html2canvas from 'html2canvas';
 import { deleteInvestor, detailInvestor } from '../../../action/investor';
 export default function DetailStartUp(props) {
   const [investor, setInvestor] = useState(false);
   const [isLoading, setLoading] = useState(true);
   const [isOpen, setOpen] = useState(false);
-  const componentRef = useRef();
   let history = useHistory();
   const { id } = props.match.params;
 
@@ -30,9 +30,12 @@ export default function DetailStartUp(props) {
       history.push(`/detail/${investor._id_event}/investor`);
     });
   };
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-  });
+  const downloadQrCode = useCallback(async () => {
+    const qrcode = document.querySelector('.ImgQrCode');    
+    const canvas = await html2canvas(qrcode);
+    const dataURL = canvas.toDataURL('image/png');
+    downloadjs(dataURL, `investor_${investor.nama_investor}`, 'image/png');
+  }, [investor]);
   return (
     <>
       <Layout arrowB={true} title="Detail Investor">
@@ -91,18 +94,12 @@ export default function DetailStartUp(props) {
                     alt="qr code"
                   />
                 </div>
-                <button onClick={handlePrint}>Print Qr Code</button>
+                <button onClick={downloadQrCode}>Print Qr Code</button>
               </Col>
             </Row>
           )}
         </div>
       </Layout>
-      <div className="WrapperPrintQr" ref={componentRef}>
-        <div>
-          <p>Nama: {investor.nama_investor}</p>
-          <img src={investor.imgQrCode} className="ImgQrCode" alt="qr code" />
-        </div>
-      </div>
     </>
   );
 }

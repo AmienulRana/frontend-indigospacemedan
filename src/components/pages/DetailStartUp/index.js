@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { getApi } from "../../../utils/fetch";
 import Layout from "../../Layout/";
 import "./style.css";
@@ -7,13 +7,13 @@ import Loading from "../../elements/Loading";
 import { FaEllipsisV } from "react-icons/fa";
 import { deleteApi } from "../../../utils/fetch";
 import { useHistory } from "react-router-dom";
-import { useReactToPrint } from "react-to-print";
+import downloadjs from 'downloadjs';
+import html2canvas from 'html2canvas';
 
 export default function DetailStartUp(props) {
   const [startup, setStartup] = useState(false);
   const [isLoading, setLoading] = useState(true);
   const [isOpen, setOpen] = useState(false);
-  const componentRef = useRef();
   let history = useHistory();
   const { id } = props.match.params;
   useEffect(() => {
@@ -32,16 +32,13 @@ export default function DetailStartUp(props) {
       history.push(`/detail/${startup._id_event}`);
     });
   };
-  // const handlePrint = useReactToPrint({
-  //   content: () => componentRef.current,
-  // });
-  const downloadQrCode = () => {
-    const qrCodeURL = document
-      .getElementById("ImgQrCode")
-      .toDataURL("image/png")
-      .replace("image/png", "image/octet-stream");
-    console.log(qrCodeURL);
-  };
+
+  const downloadQrCode = useCallback(async () => {
+    const qrcode = document.querySelector('.ImgQrCode');    
+    const canvas = await html2canvas(qrcode);
+    const dataURL = canvas.toDataURL('image/png');
+    downloadjs(dataURL, `startup_${startup.nama_startup}`, 'image/png');
+  }, [startup]);
 
   return (
     <>
@@ -108,12 +105,6 @@ export default function DetailStartUp(props) {
           )}
         </div>
       </Layout>
-      <div className="WrapperPrintQr" ref={componentRef}>
-        <div>
-          <p>Nama: {startup.nama_startup}</p>
-          <img src={startup.imgQrCode} className="ImgQrCode" alt="qr code" />
-        </div>
-      </div>
     </>
   );
 }
