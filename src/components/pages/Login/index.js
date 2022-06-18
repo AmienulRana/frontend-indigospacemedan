@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { Container } from "reactstrap";
 import { FaUser, FaLock } from "react-icons/fa";
 import Logo from "../../../assets/img/logoMerah.png";
 import "./login.css";
 import { setToken, setExpireTime } from "../../../utils/storage";
 import { useHistory } from "react-router-dom";
+import serviceLogin from "../../../action/login";
 export default function Login() {
   const [auth, setAuth] = useState({
     username: "",
@@ -13,25 +13,14 @@ export default function Login() {
   });
   const [messageError, setMessageError] = useState("");
   const history = useHistory();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    return axios({
-      method: "post",
-      url: "https://api-indigospacemedan.herokuapp.com/login",
-      data: {
-        username: auth.username,
-        password: auth.password,
-      },
-    })
-      .then((res) => {
-        if (res.data.error) {
-          return setMessageError(res.data.message);
-        }
-        setToken(res.data.token);
-        setExpireTime(259200);
-        history.push("/");
-      })
-      .catch((err) => console.log(err));
+    const response = await serviceLogin(auth);
+    if(!response.error){
+      setToken(response.token);
+      setExpireTime(259200);
+      return history.push("/");
+    }else{setMessageError(response.message);}
   };
   return (
     <Container>

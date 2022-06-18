@@ -2,21 +2,20 @@ import React, { useState, useEffect } from "react";
 import Card from "../../elements/Card";
 import { Row, Col } from "reactstrap";
 import Layout from "../../Layout";
-import { getApi } from "../../../utils/fetch";
 import EventNotFound from "./eventNotFound";
 import Loading from "../../elements/Loading";
 import "./home.css";
+import { getEvent } from "../../../action/event";
 
 export default function Home() {
   const [events, setEvents] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  useEffect(() => {
-    getApi("event")
-      .then(async (res) => {
-        await setEvents(res.events);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
+  useEffect(async () => {
+    const response = await getEvent();
+    if(response){
+      setEvents(response.events);
+      setLoading(false);
+    }
   }, []);
   return (
     <Layout title="Daftar Event">
@@ -33,21 +32,12 @@ export default function Home() {
         ) : (
           events.map((event, id) => {
             return (
-              <Col
-                xs="12"
-                md="4"
-                xl="3"
-                className="ColCard"
-                key={id}
+              <Col xs="12" md="4" xl="3"
+                className="ColCard" key={id}
                 style={{ marginLeft: events.length < 3 ? "15px" : "0" }}
               >
-                <Card
-                  id={event._id}
-                  nama={event.nama_event}
-                  jadwal={event.jadwal_event}
-                  lokasi={event.lokasi_event}
-                  setEvents={setEvents}
-                />
+                <Card id={event._id} nama={event.nama_event} jadwal={event.jadwal_event}
+                  lokasi={event.lokasi_event} setEvents={setEvents}/>
               </Col>
             );
           })

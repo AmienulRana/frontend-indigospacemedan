@@ -65,7 +65,7 @@
   height: 70px;
 }
 .Card span {
-  color: var(--disabled);
+  color: var(--bg-sidebar);
 }
 .Date {
   display: flex;
