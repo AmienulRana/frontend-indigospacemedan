@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import Layout from "../../Layout";
-import { addApi } from "../../../utils/fetch";
+import {addInvestor} from '../../../action/investor';
+import { useHistory } from 'react-router-dom';
 export default function AddInves(props) {
   const { eventId } = props.match.params;
+  const history = useHistory();
   const [investor, setInvestor] = useState({
     nama_investor: "",
     daerah: "",
@@ -11,19 +13,12 @@ export default function AddInves(props) {
     perusahaan: "",
   });
   const [message, setMessage] = useState("");
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addApi(`${eventId}/investor`, {
-      nama_investor: investor.nama_investor,
-      daerah: investor.daerah,
-      sector_usaha: investor.sector_usaha,
-      perusahaan: investor.perusahaan,
-    }).then((res) => {
-      if (!res.error) {
-        window.location.href = `/detail/${eventId}/investor`;
-        return false;
-      }
-    });
+    const response = await addInvestor(eventId, investor);
+    if(response && !response.error){
+      history.push(`/detail/${eventId}/investor`)
+    }
   };
   useEffect(() => {
     setTimeout(() => setMessage(""), 3000);

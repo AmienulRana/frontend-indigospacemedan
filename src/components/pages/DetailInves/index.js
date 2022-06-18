@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
-import { getApi } from "../../../utils/fetch";
 import Layout from "../../Layout/";
 import "./style.css";
 import { Row, Col } from "reactstrap";
 import Loading from "../../elements/Loading";
 import { FaEllipsisV } from "react-icons/fa";
-import { deleteApi } from "../../../utils/fetch";
 import { useHistory } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
+import { deleteInvestor, detailInvestor } from '../../../action/investor';
 export default function DetailStartUp(props) {
   const [investor, setInvestor] = useState(false);
   const [isLoading, setLoading] = useState(true);
@@ -15,19 +14,19 @@ export default function DetailStartUp(props) {
   const componentRef = useRef();
   let history = useHistory();
   const { id } = props.match.params;
-  useEffect(() => {
-    getApi(`investor/${id}`).then((res) => {
-      if (res.error) {
-        return history.push("/");
-      } else if (res.investor === null) {
-        return history.push("/");
-      }
-      setInvestor(res.investor);
-      setLoading(!true);
-    });
+
+  useEffect(async () => {
+    const response = await detailInvestor(id);
+    if(response && !response.error){
+      setInvestor(response.investor);
+    }else if(response.investor === null){
+      return history.push("/");
+    }
+    setLoading(!true);
   }, []);
+
   const handleDelete = (id) => {
-    deleteApi(`investor/${id}`).then((res) => {
+    deleteInvestor(id).then((res) => {
       history.push(`/detail/${investor._id_event}/investor`);
     });
   };
