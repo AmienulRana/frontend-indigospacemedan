@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import "./card.css";
 import { Link } from "react-router-dom";
 import { FaCalendarAlt, FaMapMarkerAlt, FaEllipsisV } from "react-icons/fa";
-import { deleteApi } from "../../../utils/fetch";
-export const handleDelete = (id, setEvents) => {
-  deleteApi(`event/${id}`).then((res) => setEvents(res.events));
+import { deleteEvent } from "../../../action/event";
+export const handleDelete = async (id, setEvents) => {
+  const response = await deleteEvent(id);
+  if(response && !response.error){
+    setEvents(response.events);
+  }
+  // deleteApi(`event/${id}`).then((res) => setEvents(res.events));
 };
 
 export default function Card({ nama, id, jadwal, lokasi, setEvents }) {
