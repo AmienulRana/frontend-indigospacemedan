@@ -4,6 +4,7 @@ import Layout from "../../Layout";
 import { addApi } from "../../../utils/fetch";
 import { useHistory } from "react-router-dom";
 import Modals from "../../elements/Modals";
+import { addStartup } from "../../../action/startup";
 
 export default function AddStartUp(props) {
   const { eventId } = props.match.params;
@@ -15,19 +16,12 @@ export default function AddStartUp(props) {
   });
   const [message, setMessage] = useState("");
   const history = useHistory();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addApi(`${eventId}/startup`, {
-      nama_startup: startup.nama_startup,
-      founder: startup.founder,
-      bidang: startup.bidang,
-      lokasi: startup.lokasi,
-    }).then((res) => {
-      if (!res.error) {
-        history.goBack();
-        // return false;
-      }
-    });
+    const response = await addStartup(eventId, startup);
+    if(response && !response.error){
+      history.goBack()
+    }
   };
   useEffect(() => {
     setTimeout(() => setMessage(""), 3000);
