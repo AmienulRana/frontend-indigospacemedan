@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import Layout from "../../Layout";
-import { addApi } from "../../../utils/fetch";
 import { useHistory } from "react-router-dom";
-import Modals from "../../elements/Modals";
 import { addStartup } from "../../../action/startup";
 
 export default function AddStartUp(props) {
