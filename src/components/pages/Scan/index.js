@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
-import { getToken } from "../../../utils/storage";
 import Layout from "../../Layout";
 import QrReader from "react-qr-reader";
 import scanEffect from "../../../assets/audio/soundScanner.mp3";
@@ -36,11 +34,12 @@ export default function Scan(props) {
     if (result !== null) {
       toggle();
       serviceScann({_id:result}).then((res) => {
-        if (res.data.error) {
+        console.log(res)
+        if (res.error) {
           setError(true);
-          setMessage(res.data.message);
+          setMessage(res.message);
         } else {
-          setMessage(res.data.message);
+          setMessage(res.message);
           setError(false);
         }
       });
