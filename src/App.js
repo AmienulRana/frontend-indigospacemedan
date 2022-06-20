@@ -6,6 +6,7 @@ import pages from "./components/pages";
 async function _checkAuth() {
   const { pathname } = window.location;
   const isLoggedIn = getToken();
+  console.log(isLoggedIn);
   if (!isLoggedIn && pathname !== "/login") {
     window.location.pathname = "/login";
   } else if (checkExpireTime() && pathname !== "/login") {
