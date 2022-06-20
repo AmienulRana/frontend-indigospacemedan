@@ -1,11 +1,9 @@
 import axios from "axios";
 import { getToken, deleteToken } from './storage';
-const Token = "Bearer " + getToken();
-const UrlApi = "http://localhost:5000/";
-export const URL_API = 'http://localhost:5000';
+export const URL_API = 'https://indigospacemedanapi.herokuapp.com/';
 
 export const checkExpireToken = (response) => {
-    if(response.error && !response.auth){
+    if(response.auth !== undefined && !response.auth){
         deleteToken();
        return window.location.href = '/login'
     }
