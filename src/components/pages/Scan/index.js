@@ -6,6 +6,7 @@ import Layout from "../../Layout";
 import QrReader from "react-qr-reader";
 import scanEffect from "../../../assets/audio/soundScanner.mp3";
 import "./style.css";
+import { serviceScann } from "../../../action/scann";
 
 const useAudio = (url) => {
   const [audio] = useState(new Audio(url));
@@ -34,16 +35,7 @@ export default function Scan(props) {
   const handleScan = (result) => {
     if (result !== null) {
       toggle();
-      axios({
-        method: "post",
-        url: "http://localhost:3000/scann",
-        headers: {
-          Authorization: "Bearer " + getToken(),
-        },
-        data: {
-          _id: result,
-        },
-      }).then((res) => {
+      serviceScann({_id:result}).then((res) => {
         if (res.data.error) {
           setError(true);
           setMessage(res.data.message);

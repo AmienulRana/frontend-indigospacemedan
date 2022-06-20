@@ -1,6 +1,6 @@
 import { ServiceApi } from '../utils/fetch';
-export const getInvestor = () => {
-    return ServiceApi('get', 'investor', {})
+export const getInvestor = (eventId) => {
+    return ServiceApi('get', `${eventId}/investor`, {})
 }
 export const addInvestor = (eventId, data) => {
     return ServiceApi('post', `${eventId}/investor`, data)

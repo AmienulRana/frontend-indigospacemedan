@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { getApi } from "../../../utils/fetch";
 import Layout from "../../Layout";
 import { Link } from "react-router-dom";
 import TableStartUp from "./Table/TableStartUp";
 import TableInvestor from "./Table/TableInves";
-
+import { detailEvent } from '../../../action/event';
 import "./detail.css";
 export default function DetailEvent(props) {
   const TableRender = props.match.path === "/detail/:id";
   const id = props.match.params.id;
   const [events, setEvents] = useState(false);
   useEffect(() => {
-    getApi(`event/${id}`).then((res) => {
+    detailEvent(id).then((res) => {
       if (res.error) {
         return (window.location.href = "/");
       }

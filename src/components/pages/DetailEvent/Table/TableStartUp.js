@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./table.css";
-import { getApi } from "../../../../utils/fetch";
 import Loading from "../../../elements/Loading";
+import { getStartup } from "../../../../action/startup";
 export default function TableStartUp(props) {
   const { eventId } = props;
   const [startups, setStartups] = useState(false);
   const [isLoading, setLoading] = useState(true);
-  useEffect(() => {
-    getApi(`${eventId}/startup`).then((res) => {
-      setStartups(res.startup);
+  useEffect(async () => {
+    const response = await getStartup(eventId);
+    if(response && !response.error){
+      setStartups(response.startup);
       setLoading(false);
-    });
+    }
   }, []);
   return (
     <>

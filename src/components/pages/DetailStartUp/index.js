@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { getApi } from "../../../utils/fetch";
 import Layout from "../../Layout/";
 import "./style.css";
 import { Row, Col } from "reactstrap";
 import Loading from "../../elements/Loading";
 import { FaEllipsisV } from "react-icons/fa";
-import { deleteApi } from "../../../utils/fetch";
+import { detailStartup,deleteStartup }from '../../../action/startup';
 import { useHistory } from "react-router-dom";
 import downloadjs from 'downloadjs';
 import html2canvas from 'html2canvas';
@@ -16,19 +15,17 @@ export default function DetailStartUp(props) {
   const [isOpen, setOpen] = useState(false);
   let history = useHistory();
   const { id } = props.match.params;
-  useEffect(() => {
-    getApi(`startup/${id}`).then((res) => {
-      if (res.error) {
-        return history.push("/");
-      } else if (res.startup === null) {
-        return history.push("/");
-      }
-      setStartup(res.startup);
-      setLoading(!true);
-    });
+  useEffect(async () => {
+    const response = await detailStartup(id);
+    if(response && !response.error){
+      setStartup(response.startup);
+    }else if(response.startup === null){
+      return history.push("/");
+    }
+    setLoading(!true);
   }, []);
   const handleDelete = (id) => {
-    deleteApi(`startup/${id}`).then((res) => {
+    deleteStartup(id).then((res) => {
       history.push(`/detail/${startup._id_event}`);
     });
   };

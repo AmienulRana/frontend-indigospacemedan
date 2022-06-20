@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getApi } from "../../../../utils/fetch";
 import Loading from "../../../elements/Loading";
+import { getInvestor } from '../../../../action/investor';
 export default function TableInvestor(props) {
   const { eventId } = props;
-  const [inves, setInves] = useState(false);
+  const [inves, setInves] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  useEffect(() => {
-    getApi(`${eventId}/investor`).then((res) => {
-      console.log(res);
-      setInves(res.investor);
+  useEffect(async () => {
+    const response = await getInvestor(eventId);
+    if(response && !response.error){
+      setInves(response.investor);
       setLoading(false);
-    });
+    }
   }, []);
   return (
     <>
