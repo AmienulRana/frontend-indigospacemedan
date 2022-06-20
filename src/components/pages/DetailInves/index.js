@@ -85,6 +85,12 @@ export default function DetailStartUp(props) {
                   </p>
                   <p className="ml-20">{investor.keterangan}</p>
                 </div>
+                <div className="d-flex detail">
+                  <p className="width">
+                    Waktu hadir <span>:</span>
+                  </p>
+                  <p className="ml-20">{investor.waktu_hadir}</p>
+                </div>
               </Col>
               <Col md="4">
                 <div>
