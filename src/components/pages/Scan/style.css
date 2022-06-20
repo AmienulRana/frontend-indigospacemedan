@@ -1,6 +1,7 @@
 .wrapperPreview {
   margin-top: 77px;
   display: flex;
+  flex-direction: column;
 }
 video#preview {
   width: 340px;
@@ -44,13 +45,12 @@ video#preview {
 }
 .Message,
 .MessageError {
-  margin-left: 100px;
-  /* color: var(--bg-sidebar); */
   font-weight: bold;
   font-size: 22px;
   display: flex;
   height: max-content;
   align-items: center;
+  margin-top: 30px;
 }
 .Message p,
 .MessageError p {
